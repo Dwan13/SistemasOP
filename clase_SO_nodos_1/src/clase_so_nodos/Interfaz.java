@@ -20,11 +20,12 @@ import javax.swing.JTextField;
 public class Interfaz extends JFrame implements ActionListener{
    
     private Label interfaz;
-    private JTextArea salida;
+    private JTextField salida;
     private Button añadir_elemento;
     private Button eliminar_elemento;
     private Button mostrar_cola;
     private Button numero_elementos;
+    private Button salir;
     private Cola cola;
     
     Interfaz(){
@@ -36,10 +37,10 @@ public class Interfaz extends JFrame implements ActionListener{
         this.interfaz.setBounds(100,25,400,50);
         this.add(this.interfaz);
         
-        this.salida = new JTextArea();
+        this.salida = new JTextField();
         JScrollBar scrollBar = new JScrollBar(JScrollBar.HORIZONTAL);
         JScrollPane scrollPane = new JScrollPane(this.salida); 
-        this.salida.setEditable(true);
+        this.salida.setEditable(false);
         this.salida.setFont(new Font("Serif", Font.BOLD, 12));
         this.salida.setBounds(100,50,400,150);
         this.add(this.salida);
@@ -49,14 +50,14 @@ public class Interfaz extends JFrame implements ActionListener{
         
         
         this.añadir_elemento = new Button("Añadir elemento");
-        this.añadir_elemento.setBounds(100, 200, 150, 50);
+        this.añadir_elemento.setBounds(100, 210, 150, 50);
         this.añadir_elemento.setActionCommand("agregar");
         this.añadir_elemento.addActionListener(this);
         this.add(this.añadir_elemento);
         
         
         this.eliminar_elemento = new Button("Eliminar elemento");
-        this.eliminar_elemento.setBounds(300, 200, 150, 50);
+        this.eliminar_elemento.setBounds(300, 210, 150, 50);
         this.eliminar_elemento.setActionCommand("eliminar");
         this.eliminar_elemento.addActionListener(this);
         this.add(this.eliminar_elemento);
@@ -74,10 +75,16 @@ public class Interfaz extends JFrame implements ActionListener{
         this.numero_elementos.addActionListener(this);
         this.add(this.numero_elementos);
         
+        this.salir = new Button("Salir");
+        this.salir.setBounds(200, 400, 150, 50);
+        this.salir.setActionCommand("salir");
+        this.salir.addActionListener(this);
+        this.add(this.salir);
+        
         
         
         this.setResizable(true);
-        this.setBounds(300, 200, 600, 400);
+        this.setBounds(300, 200, 600, 500);
         this.setVisible(true);
     }
 
@@ -86,9 +93,7 @@ public class Interfaz extends JFrame implements ActionListener{
         switch (e.getActionCommand()){
             case "agregar":{
                 cola.nuevo(JOptionPane.showInputDialog(null));
-                this.salida.setText(cola.mostrarCola());
                 String tex = cola.mostrarCola();
-                this.salida.append(cola.mostrarCola());
                 this.salida.setText(tex);
                 this.salida.repaint();
                 System.out.println(cola.mostrarCola());
@@ -108,6 +113,10 @@ public class Interfaz extends JFrame implements ActionListener{
             case "numero":{
                 JOptionPane.showMessageDialog(null, cola.numElementos());
                 System.out.println(cola.numElementos());
+                break;
+            }
+             case "salir":{
+                 System.exit(0);
                 break;
             }
         }
