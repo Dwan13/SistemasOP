@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/clase_so_nodos/Colas.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/clase_so_nodos/Clase_SO_nodos.java</file>
-            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/clase_so_nodos/nodo.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/sample/Cola.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/sample/Main.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/sample/Nodo.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/sample/Controller.java</file>
+            <file>file:/C:/Users/HP/Documents/NetBeansProjects/clase_SO_nodos/src/sample/sample.fxml</file>
         </group>
     </open-files>
 </project-private>
