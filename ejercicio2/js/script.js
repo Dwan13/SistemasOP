@@ -48,19 +48,34 @@ function createDigrama() {
   ctx.lineTo(timeFinal[timeFinal.length - 1] + 4, 0);
   ctx.stroke();
 
+  // for (var i = 0; i < row; i++) {
+  //   ctx.beginPath() //iniciar ruta
+  //   // ctx.strokeStyle="#ffffff"; //color externo
+  //   ctx.fillStyle = "#ffffff"; //color de relleno
+  //   ctx.font = "bold 10px arial"; //estilo de texto
+  //   ctx.fillText(timeFinal[i], timeFinal[i], 16);
+  //   ctx.stroke();
+  // }
+
   for (var i = 0; i < row; i++) {
     ctx.beginPath();
     ctx.lineWidth = "5";
     ctx.strokeStyle = "#000000";
-    ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 11, timeRafaga[i], 5);
+    ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 20, timeRafaga[i], 5);
     ctx.stroke();
     if (i > 0) {
       ctx.beginPath();
       ctx.lineWidth = "5";
       ctx.strokeStyle = "#dfe9eb";
-      ctx.rect(timellegada[i], espacio * i + 11, timeEspera[i], 5);
+      ctx.rect(timellegada[i], espacio * i + 20, timeEspera[i], 5);
       ctx.stroke();
     }
+    ctx.beginPath() //iniciar ruta
+    // ctx.strokeStyle="#ffffff"; //color externo
+    ctx.fillStyle = "#ffffff"; //color de relleno
+    ctx.font = "bold 10px arial"; //estilo de texto
+    ctx.fillText("P" + (i + 1), timellegada[i] + timeEspera[i] + 3, espacio * i + 25);
+    ctx.stroke();
   }
 }
 
