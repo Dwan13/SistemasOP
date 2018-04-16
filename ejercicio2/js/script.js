@@ -5,9 +5,24 @@ var timeEspera = [];
 var timeFinal = [];
 var comodin = 3;
 var espacio = 10;
+var table_start = "<table border=20>";
+var table_end = "</table>";
+var tr_start = "<tr>";
+var tr_end = "</tr>";
+var td_start = "<td>";
+var td_end = "</td>";
+
 var row = Math.floor(Math.random() * (10 - 2)) + 2;
 
 function createTime() {
+  timellegada = [0];
+  timeRafaga = [];
+  timeRetorno = [];
+  timeEspera = [];
+  timeFinal = [];
+  comodin = 3;
+  espacio = 10;
+  row = Math.floor(Math.random() * (10 - 2)) + 2;
   //create timellegada
   for (var i = 1; i < row - 1; i++) {
     comodin = comodin + Math.floor((Math.random() * 10) + 1) * i
@@ -40,7 +55,7 @@ function createTime() {
 
 function createDigrama() {
   createTime();
-  create()
+  create();
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   ctx.lineWidth = "10";
@@ -82,13 +97,8 @@ function createDigrama() {
 function create() {
   //Create diagrama de grantt
   //create table
-  var table_start = "<table border=20>";
-  var table_end = "</table>";
-  var tr_start = "<tr>";
-  var tr_end = "</tr>";
-  var td_start = "<td>";
-  var td_end = "</td>";
-
+  var a = document.body.childNodes
+  document.body.removeChild(a[3]);
   var html = "";
   html += table_start;
 
