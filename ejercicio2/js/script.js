@@ -1,30 +1,41 @@
-var btn = document.createElement('button');
-btn.innerHTML = "Iniciar";
-document.body.appendChild(btn);
-btn.addEventListener("click", createTable, true);
-function createTable(){
-var div = document.createElement('div');
-div.setAttribute("id", "tbl");
-document.body.appendChild(div)
-	document.getElementById("tbl").innerHTML = "<table border = '1'>" +
-  '<tr>' +
-    '<th>Proceso</th>' +
-    '<th>Tiempo de Llegada</th> ' +
-    '<th>Tiempo de Rafaga</th>' +
-  '</tr>' +
-  '<tr>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-  '</tr>' +
-  '<tr>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-  '</tr>' +
-  '<tr>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-    '<td>cell</td>' +
-  '</tr>'
-};
+
+function create() {
+  mostrar=document.getElementById("Mostrar");
+  var table_start = "<table id=myTable border=1>";
+  var table_end = "</table>";
+  var tr_start = "<tr>";
+  var tr_end = "</tr>";
+  var td_start = "<td>";
+  var td_end = "</td>";
+  var row = Math.floor((Math.random() * 100) + 1);
+  document.write(table_start);
+
+  for (var r = 0; r < 10; r++) {
+    document.write(tr_start);
+    for (var c = 0; c < 6; c++) {
+      if (r === 0 && c === 0) {
+        document.write(td_start + "Proceso" + td_end);
+      }
+      if (r === 0 && c === 1) {
+        document.write(td_start + "Tiempo de llegada" + td_end);
+      }
+      if (r === 0 && c === 2) {
+        document.write(td_start + "Tiempo de Rafaga" + td_end);
+      }
+      if (r === 0 && c === 3) {
+        document.write(td_start + "Tiempo de retorno" + td_end);
+      }
+      if (r === 0 && c === 4) {
+        document.write(td_start + "Tiempo de espera" + td_end);
+      }
+      if (r === 0 && c === 5) {
+        document.write(td_start + "Tiempo Final" + td_end);
+      }
+      if (r>=1) {
+        document.write(td_start + "Datos" + td_end);
+      }
+    }
+    document.write(tr_end);
+  }
+  document.write(table_end);
+}
