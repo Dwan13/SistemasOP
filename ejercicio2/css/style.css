@@ -31,20 +31,6 @@ body>* {}
   width: 50%;
 }
 
-.percent {
-  width: 90%;
-}
-
-.formulario {
-  padding: 10px;
-  background-color: #C0C0C0;
-  width: 100px;
-}
-
-.panel {}
-
-#container {}
-
 .center {
   width: auto;
   margin: 0px auto;
