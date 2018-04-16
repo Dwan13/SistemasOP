@@ -4,6 +4,7 @@ var timeRetorno = [];
 var timeEspera = [];
 var timeFinal = [];
 var comodin = 3;
+var espacio = 10;
 var row = Math.floor(Math.random() * (10 - 2)) + 2;
 
 function createTime() {
@@ -37,57 +38,88 @@ function createTime() {
   console.log("timeEspera ", timeEspera);
 }
 
+function createDigrama() {
+  createTime();
+  create()
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.lineWidth = "10";
+  ctx.moveTo(0, 0);
+  ctx.lineTo(timeFinal[timeFinal.length - 1] + 4, 0);
+  ctx.stroke();
+
+  for (var i = 0; i < row; i++) {
+    ctx.beginPath();
+    ctx.lineWidth = "5";
+    ctx.strokeStyle = "#000000";
+    ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 11, timeRafaga[i], 5);
+    ctx.stroke();
+    if (i > 0) {
+      ctx.beginPath();
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "#dfe9eb";
+      ctx.rect(timellegada[i], espacio * i + 11, timeEspera[i], 5);
+      ctx.stroke();
+    }
+  }
+}
+
 function create() {
-  createTime()
-  var table_start = "<table id=myTable border=1>";
+  //Create diagrama de grantt
+  //create table
+  var table_start = "<table border=20>";
   var table_end = "</table>";
   var tr_start = "<tr>";
   var tr_end = "</tr>";
   var td_start = "<td>";
   var td_end = "</td>";
-  document.write(table_start);
+
+  var html = "";
+  html += table_start;
 
   for (var r = 0; r < row; r++) {
-    document.write(tr_start);
+    html += tr_start;
     for (var c = 0; c < 6; c++) {
       if (r === 0 && c === 0) {
-        document.write(td_start + "Proceso" + td_end);
+        html += td_start + "Proceso" + td_end;
       }
       if (r === 0 && c === 1) {
-        document.write(td_start + "Tiempo de llegada" + td_end);
+        html += td_start + "Tiempo de llegada" + td_end;
       }
       if (r === 0 && c === 2) {
-        document.write(td_start + "Tiempo de Rafaga" + td_end);
+        html += td_start + "Tiempo de Rafaga" + td_end;
       }
       if (r === 0 && c === 3) {
-        document.write(td_start + "Tiempo de retorno" + td_end);
+        html += td_start + "Tiempo de retorno" + td_end;
       }
       if (r === 0 && c === 4) {
-        document.write(td_start + "Tiempo de espera" + td_end);
+        html += td_start + "Tiempo de espera" + td_end;
       }
       if (r === 0 && c === 5) {
-        document.write(td_start + "Tiempo Final" + td_end);
+        html += td_start + "Tiempo Final" + td_end;
       }
       if (r >= 1 && c === 0) {
-        document.write(td_start + "P" + r + td_end);
+        html += td_start + "P" + r + td_end;
       }
       if (r >= 1 && c === 1) {
-        document.write(td_start + timellegada[r - 1] + " llegada" + td_end);
+        html += td_start + timellegada[r - 1] + " llegada" + td_end;
       }
       if (r >= 1 && c === 2) {
-        document.write(td_start + timeRafaga[r - 1] + " Rafaga" + td_end);
+        html += td_start + timeRafaga[r - 1] + " Rafaga" + td_end;
       }
       if (r >= 1 && c === 3) {
-        document.write(td_start + timeRetorno[r - 1] + " Retorno" + td_end);
+        html += td_start + timeRetorno[r - 1] + " Retorno" + td_end;
       }
       if (r >= 1 && c === 4) {
-        document.write(td_start + timeEspera[r - 1] + " Espera" + td_end);
+        html += td_start + timeEspera[r - 1] + " Espera" + td_end;
       }
       if (r >= 1 && c === 5) {
-        document.write(td_start + timeFinal[r - 1] + " Final" + td_end);
+        html += td_start + timeFinal[r - 1] + " Final" + td_end;
       }
     }
-    document.write(tr_end);
+    html += tr_end;
   }
-  document.write(table_end);
+  html += table_end;
+
+  document.body.innerHTML += html;
 }
