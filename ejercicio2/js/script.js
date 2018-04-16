@@ -4,18 +4,37 @@ var timeRetorno = [];
 var timeEspera = [];
 var timeFinal = [];
 var comodin = 0;
-var row = Math.floor((Math.random() * 100) + 1);
+var row = Math.floor(Math.random() * (100 - 2)) + 2;
 
 function createTime() {
   //create timellegada
-  for (var i = 1; i < row; i++) {
-    comodin = comodin + (i * Math.floor((Math.random() * 10) + 1))
+  for (var i = 1; i < row - 1; i++) {
+    comodin = comodin + (i * Math.floor((Math.random() * (i * 10)) + i))
     timellegada.push(comodin)
   }
+  console.log("timellegada ", timellegada);
   //create timeRafaga
-  for (var i = 0; i < row; i++) {
-    timeRafaga.push(i * Math.floor((Math.random() * 10) + 1))
+  for (var i = 0; i < row - 1; i++) {
+    timeRafaga.push(Math.floor((Math.random() * 100) + 1))
   }
+  console.log("timeRafaga ", timeRafaga);
+
+  //create timeFinal
+  timeFinal.push(timeRafaga[0])
+  for (var i = 1; i < row - 1; i++) {
+    timeFinal.push(timeRafaga[i] + timeFinal[i - 1])
+  }
+  console.log("timeFinal ", timeFinal);
+  //create timeRetorno
+  for (var i = 0; i < row - 1; i++) {
+    timeRetorno.push(timeFinal[i] - timellegada[i])
+  }
+  console.log("timeRetorno ", timeRetorno);
+  //create timeEspera
+  for (var i = 0; i < row - 1; i++) {
+    timeEspera.push(timeRetorno[i] - timeRafaga[i])
+  }
+  console.log("timeEspera ", timeEspera);
 }
 
 function create() {
@@ -49,20 +68,23 @@ function create() {
       if (r === 0 && c === 5) {
         document.write(td_start + "Tiempo Final" + td_end);
       }
-      if (r >= 1) {
-        if (c === 0) {
-          document.write(td_start + "P" + r + td_end);
-        } else {
-          if (r === 1 && c === 1) {
-            document.write(td_start + timellegada[0] + " segundos" + td_end);
-          } else if (r > 1 && c === 1) {
-            document.write(td_start + timellegada[r] + " segundos" + td_end);
-          } else if (c === 2) {
-            document.write(td_start + timeRafaga[r] + " segundos" + td_end);
-          } else {
-            document.write(td_start + r + " " + c + td_end);
-          }
-        }
+      if (r >= 1 && c === 0) {
+        document.write(td_start + "P" + r + td_end);
+      }
+      if (r >= 1 && c === 1) {
+        document.write(td_start + timellegada[r - 1] + " llegada" + td_end);
+      }
+      if (r >= 1 && c === 2) {
+        document.write(td_start + timeRafaga[r - 1] + " Rafaga" + td_end);
+      }
+      if (r >= 1 && c === 3) {
+        document.write(td_start + timeRetorno[r - 1] + " Retorno" + td_end);
+      }
+      if (r >= 1 && c === 4) {
+        document.write(td_start + timeEspera[r - 1] + " Espera" + td_end);
+      }
+      if (r >= 1 && c === 5) {
+        document.write(td_start + timeFinal[r - 1] + " Final" + td_end);
       }
     }
     document.write(tr_end);
