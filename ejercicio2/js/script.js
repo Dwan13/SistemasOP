@@ -5,7 +5,6 @@ var timeEspera = [];
 var timeFinal = [];
 var comodin = 3;
 var espacio = 10;
-var multiplo = 0;
 var tiempo = 1000; // un segundo
 var y = 0;
 var row = Math.floor(Math.random() * (10 - 2)) + 2;
@@ -121,6 +120,7 @@ function createGraph() {
   //create table
   createTime();
   createTable();
+  var multiplo = 0;
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   ctx.lineWidth = "10";
@@ -129,26 +129,26 @@ function createGraph() {
   ctx.stroke();
   for (var i = 0; i < row; i++) {
     setTimeout((function() {
+      var i = this;
       console.log("HOla entre", this);
       ctx.beginPath();
       ctx.lineWidth = "5";
       ctx.strokeStyle = "#000000";
-      ctx.rect(timellegada[y] + timeEspera[y], espacio * y + 20, timeRafaga[y], 5);
+      ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 20, timeRafaga[i], 5);
       ctx.stroke();
       if (i > 0) {
         ctx.beginPath();
         ctx.lineWidth = "5";
         ctx.strokeStyle = "#dfe9eb";
-        ctx.rect(timellegada[y], espacio * y + 20, timeEspera[y], 5);
+        ctx.rect(timellegada[i], espacio * i + 20, timeEspera[i], 5);
         ctx.stroke();
       }
       ctx.beginPath() //iniciar ruta
       // ctx.strokeStyle="#ffffff"; //color externo
       ctx.fillStyle = "#ffffff"; //color de relleno
       ctx.font = "bold 10px arial"; //estilo de texto
-      ctx.fillText("P" + (y + 1), timellegada[y] + timeEspera[y] + 3, espacio * y + 25);
+      ctx.fillText("P" + (i + 1), timellegada[i] + timeEspera[i] + 3, espacio * i + 25);
       ctx.stroke();
-      y += 1;
     }).bind(i), multiplo * tiempo);
     multiplo += 1; // 1 porque es un procedimiento por for
   }
