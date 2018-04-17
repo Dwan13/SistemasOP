@@ -6,7 +6,6 @@ var timeFinal = [];
 var comodin = 3;
 var espacio = 10;
 var tiempo = 1000; // un segundo
-var y = 0;
 var row = Math.floor(Math.random() * (10 - 2)) + 2;
 
 // //Hilo ejecuta cosas cada 1 segundos
@@ -130,7 +129,7 @@ function createGraph() {
   for (var i = 0; i < row; i++) {
     setTimeout((function() {
       var i = this;
-      console.log("HOla entre", this);
+      // console.log("HOla entre", this);
       ctx.beginPath();
       ctx.lineWidth = "5";
       ctx.strokeStyle = "#000000";
