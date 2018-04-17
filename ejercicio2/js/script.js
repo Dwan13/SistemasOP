@@ -119,7 +119,6 @@ function createGraph() {
   //create table
   createTime();
   createTable();
-  var multiplo = 0;
   var c = document.getElementById("myCanvas");
   var ctx = c.getContext("2d");
   ctx.lineWidth = "10";
@@ -148,7 +147,6 @@ function createGraph() {
       ctx.font = "bold 10px arial"; //estilo de texto
       ctx.fillText("P" + (i + 1), timellegada[i] + timeEspera[i] + 3, espacio * i + 25);
       ctx.stroke();
-    }).bind(i), multiplo * tiempo);
-    multiplo += 1; // 1 porque es un procedimiento por for
+    }).bind(i), i * tiempo);
   }
 }
