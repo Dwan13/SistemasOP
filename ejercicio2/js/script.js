@@ -53,50 +53,7 @@ function createTime() {
   console.log("timeEspera ", timeEspera);
 }
 
-function createDigrama() {
-  createTime();
-  create();
-  var c = document.getElementById("myCanvas");
-  var ctx = c.getContext("2d");
-  ctx.lineWidth = "10";
-  ctx.moveTo(0, 0);
-  ctx.lineTo(timeFinal[timeFinal.length - 1] + 4, 0);
-  ctx.stroke();
-
-  // for (var i = 0; i < row; i++) {
-  //   ctx.beginPath() //iniciar ruta
-  //   // ctx.strokeStyle="#ffffff"; //color externo
-  //   ctx.fillStyle = "#ffffff"; //color de relleno
-  //   ctx.font = "bold 10px arial"; //estilo de texto
-  //   ctx.fillText(timeFinal[i], timeFinal[i], 16);
-  //   ctx.stroke();
-  // }
-
-  for (var i = 0; i < row; i++) {
-    ctx.beginPath();
-    ctx.lineWidth = "5";
-    ctx.strokeStyle = "#000000";
-    ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 20, timeRafaga[i], 5);
-    ctx.stroke();
-    if (i > 0) {
-      ctx.beginPath();
-      ctx.lineWidth = "5";
-      ctx.strokeStyle = "#dfe9eb";
-      ctx.rect(timellegada[i], espacio * i + 20, timeEspera[i], 5);
-      ctx.stroke();
-    }
-    ctx.beginPath() //iniciar ruta
-    // ctx.strokeStyle="#ffffff"; //color externo
-    ctx.fillStyle = "#ffffff"; //color de relleno
-    ctx.font = "bold 10px arial"; //estilo de texto
-    ctx.fillText("P" + (i + 1), timellegada[i] + timeEspera[i] + 3, espacio * i + 25);
-    ctx.stroke();
-  }
-}
-
-function create() {
-  //Create diagrama de grantt
-  //create table
+function createTable() {
   var a = document.body.childNodes
   document.body.removeChild(a[3]);
   var html = "";
@@ -147,4 +104,38 @@ function create() {
   html += table_end;
 
   document.body.innerHTML += html;
+}
+
+function createGraph() {
+  //Create diagrama de grantt
+  //create table
+  createTime();
+  createTable();
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+  ctx.lineWidth = "10";
+  ctx.moveTo(0, 0);
+  ctx.lineTo(timeFinal[timeFinal.length - 1] + 4, 0);
+  ctx.stroke();
+
+  for (var i = 0; i < row; i++) {
+    ctx.beginPath();
+    ctx.lineWidth = "5";
+    ctx.strokeStyle = "#000000";
+    ctx.rect(timellegada[i] + timeEspera[i], espacio * i + 20, timeRafaga[i], 5);
+    ctx.stroke();
+    if (i > 0) {
+      ctx.beginPath();
+      ctx.lineWidth = "5";
+      ctx.strokeStyle = "#dfe9eb";
+      ctx.rect(timellegada[i], espacio * i + 20, timeEspera[i], 5);
+      ctx.stroke();
+    }
+    ctx.beginPath() //iniciar ruta
+    // ctx.strokeStyle="#ffffff"; //color externo
+    ctx.fillStyle = "#ffffff"; //color de relleno
+    ctx.font = "bold 10px arial"; //estilo de texto
+    ctx.fillText("P" + (i + 1), timellegada[i] + timeEspera[i] + 3, espacio * i + 25);
+    ctx.stroke();
+  }
 }
